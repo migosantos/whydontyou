@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.spacer {
+  flex: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: white;
+  font-weight: 600;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.toolbar .item{
+  padding-left: 16px;
+  color: black;
+  text-decoration: underline;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #e6e6e6;
+  height: 100vh;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  height: 70%;
+  text-align: center;
+}
+
+.card-container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 250px;
+  text-align: center;
+}
+
+.bigText {
+  font-weight: bold;
+  font-size: 7em;
+}
+
+.button-secondary {
+  padding: 14px;
   color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.button-secondary {
+  background: rgb(36, 87, 109); /* this is a light blue */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.footer {
+  margin-top: 60px;
+  text-align: center;
+  color: gray;
+}
+
+@media (max-width: 500px) {
+  .bigText {
+    font-size: 4em;
   }
 }
