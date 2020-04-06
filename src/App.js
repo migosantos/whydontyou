@@ -5,22 +5,34 @@ import {activityList} from './activityList';
 class App extends Component {
     state = {
         randomActivity: null,
-        inAbout: false
+        inAbout: false,
+clickCounter: 0
     }
 
-    getRandomInt = (max) => {
+    /*getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
-    }
+    }*/
+
+shuffle = (array) => {
+array.sort(() => Math.random() - 0.5);
+}
 
     componentDidMount() {
         this.moreHandler();
     }
 
     moreHandler = () => {
-        let max = activityList.length - 1;
-        let randomInt = this.getRandomInt(max);
+        //let max = activityList.length - 1;
+        //let randomInt = this.getRandomInt(max);
         const oldState = {...this.state};
-        oldState.randomActivity = activityList[randomInt];
+let clickCount = oldState.clickCounter;
+if (activityList.length == clickCount) {
+this.shuffle(activityList);
+clickCount = 0;
+}
+
+        oldState.randomActivity = activityList[clickCount];
+oldState.clickCounter = clickCount + 1;
         this.setState(oldState);
     }
 
@@ -36,7 +48,7 @@ class App extends Component {
         let content = !this.state.inAbout ? this.getHomeContent() : this.getAboutContent();
 
         return (
-            <div class="mainContainer">
+            <div className="mainContainer">
                 <div className="toolbar">
                     <a href="#" onClick={this.aboutHandler} className="item">About</a>
                     <div className="spacer"></div>
@@ -59,7 +71,7 @@ class App extends Component {
                 <div className="footer">
                     Whatever you do, do it at home.
                     <br/>
-                    #flattenthecurve
+                    <strong>#flattenthecurve</strong>
                 </div>
             </div>
         );
@@ -69,18 +81,14 @@ class App extends Component {
         return (
             <div className="content">
                 <div className="card-container-2">
-                    <div> Nowadays, social distancing is life. Here are some things you can do to keep yourself
+                    <div> Nowadays, social distancing is life. Here are some things you can do <br/> to keep yourself
                         occupied at home.
                     </div>
                     <br/>
                     <br/>
                     <div>
-                        Suggestions? <a href="mailto:whydontyoutellus@gmail.com">whydontyoutellus@gmail.com</a>
+                        Other suggestions? <a href="mailto:whydontyoutellus@gmail.com">whydontyoutellus@gmail.com</a>
                     </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
                     <br/>
                     <br/>
                     <br/>
